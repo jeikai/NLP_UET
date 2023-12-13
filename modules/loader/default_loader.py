@@ -98,6 +98,8 @@ class DefaultLoader:
       filter_fn = self.create_length_constraint(self._option.get("train_max_length", const.DEFAULT_TRAIN_MAX_LENGTH))
       self._train_data = TranslationDataset(self._train_path, ext, fields, filter_pred=filter_fn)
       self._valid_data = self._eval_data = TranslationDataset(self._eval_path, ext, fields)
+      # temp = "trg"
+      # raise ValueError(f"train_data = {[getattr(i, temp) for i in (self._train_data.examples[0:10])]}\nvalid_data = {[getattr(i, temp) for i in (self._eval_data.examples[0:10])]}")
 #    first_sample = self._train_data[0]; raise Exception("{} {}".format(first_sample.src, first_sample.trg))
     # whatever created, we now have the two set of data ready. add the necessary constraints/filtering/etc.
     train_data = self._train_data

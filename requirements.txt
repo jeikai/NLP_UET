@@ -1,8 +1,7 @@
-torch
-nltk
+nltk~=3.8.1
 torchtext==0.6.0
 pyvi
 spacy
 PyYAML==5.4.1
-dill
-pandas
+dill~=0.3.7
+pandas~=2.0.3

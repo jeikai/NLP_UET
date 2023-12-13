@@ -33,7 +33,11 @@ class PositionalEncoder(nn.Module):
     def forward(self, x):
         if(x.shape[1] > self._max_seq_length):
             logging.warn("Input longer than maximum supported length for PE detected. Build a model with a larger input_max_length limit if you want to keep the input; or ignore if you want the input trimmed")
-            x = x[:, x:self._max_seq_length]
+
+            try:
+                x = x[:, 0:self._max_seq_length]
+            except TypeError:
+                raise TypeError(f"max_seq_length={self._max_seq_length}, max_seq_length type is {type(self._max_seq_length)}, x is {x}, x.shape is {x.shape}")
         
         x = x * math.sqrt(self.d_model)
         
